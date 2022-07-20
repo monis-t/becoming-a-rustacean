@@ -200,14 +200,62 @@ Data types :
    ( _ ) The underscore means "any other possibility or anything else.".
    
    
-   ### Working with Data
+   ## Working with Data
    <br>
    <br>
    
-   ## Enumeration
+   ### Enumeration
+  
+  By definition an enumeration is ordered listing of all items in a collection. <br>
+  We can also say that data can be one of multiple possibilities. Each possibility is a "variant".
+  
+  
+        enum Direction {
+          Up,
+          Down,
+          Left,
+          Right,
+        }
+  
+        fn which_way(go: Direction) {
+           match go {
+              Direction::Up => "up",
+              Direction::Down => "down",
+              Direction::Left => "Left",
+              Direction::RIght => "right",
+            }
+         }
+         
+   Programs are robust when `enum` is paired with `match`.
+    
+    
+   ### Struct
    
+   Structure : <br>
+   
+   Struct is a type that contains multiple peices of data. Each piece is called a field. <br>
+   Similar data can be grouped together using a `struct`.
+   
+           struct ShippingBox {
+             depth: i32;
+             width: i32;
+             height: i32;
+           }
+           
+           let my_box = ShippingBox {
+             depth : 3,
+             width : 2,
+             height : 5,
+           };
+           
+           let tall = my_box.height;
+           println! ( "the box is {:?} units tall", tall );
+           
+  Fields can be accessed from structs by dot (.).      
+           
+      
   
     
- 
+ ## Tuples
   
   
