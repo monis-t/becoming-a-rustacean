@@ -45,7 +45,7 @@ Data types :
   `let go = "let's go";` <br>
   
   
-  ##Functions
+  ## Functions
   
    Funcitons are a way to encapsulate program functionality. <br>
    We can provide them the privilage of accepting data or returning data.<br>
@@ -60,14 +60,14 @@ Data types :
     
     Usage :
     
-    `
-    fn add( a: i32, b: i32 ) -> i32 {
+    
+    `fn add( a: i32, b: i32 ) -> i32 {
       a + b 
       } 
       let x = add(1, 1); 
       let y = add(3, 0); 
-      let z = add(x, 1); 
-    `
+      let z = add(x, 1);`
+      
     As seen above, functions can be executed by calling the function itself. <br>
     
   
