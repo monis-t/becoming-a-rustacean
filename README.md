@@ -138,8 +138,75 @@ Data types :
    It's important to remember that code executes line by line and therefore it becomes necessary to
    mention the steps correctly.
    
-   ## Repetition 
+## Repetition 
    
+   
+ Using loops. <br>
+    
+ Repetition in rust or any other language is called 'looping' or 'iteration'. <br> 
+ There's multiple types of loops , <br>
+ - Infinite loooooooooooooooooo.....p . `loop`
+ - Conditional loop. `while`  <br>
+ 
+ Keep in mind that the variables decalred have the `mut` keyword. Incase you haven't mentioned the
+ keyword, the loop won't execute. May the compiler be with you. <br>
+    
+         let mut a = 0;
+         loop {
+             if a == 5 {
+                 break;
+              }
+              println! ("{:?}", a);
+              a = a + 1;
+          } //infinite loop executes without break statement.
+    -----------------------------------------------------------------
+          let mut a = 0;
+          while a != 5; {
+               println! ( "{:?}, a" );
+               a = a + 1;
+          }
+          
+  Break can be used with either loops.
+  
+  ## Match 
+  
+  Adding logic couldn't have been easier with the `match` keyword. <br>
+  It's similar to if..else, but it has more of an exhaustive approach, ie, all options must be considered.
+  
+      fn main() {
+         let a = true;
+         match a {
+            true => println! ( "It's true." );
+            false => println! ( "It's a trap." ); 
+            }
+      }
+  
+ ----------------------------------------------------------
+           
+        fn main () {
+          let a = 2;
+          match a {
+            1 => println! ( "one." );
+            2 => println! ( "two." );
+            3 => println! ( "three." );
+            _ => println! ( "anuthing other than the value above." );
+            }
+         }
+         
+   An interesting fact about match is that its checked by the complier. If a new possibility is added, you will be notified. <br>
+   if...else isn't checked by the complier. If a new possibility is added, your code may become buggy. <br>
+   
+   It's advised to prefer match over if..else.
+   ( _ ) The underscore means "any other possibility or anything else.".
+   
+   
+   ### Working with Data
+   <br>
+   <br>
+   
+   ## Enumeration
+   
+  
     
  
   
