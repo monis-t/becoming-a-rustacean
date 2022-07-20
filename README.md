@@ -58,20 +58,89 @@ Data types :
     fn name ( parameter1: parameter type, parameter2: parameter type) - return type { <br> body <br> }
     <br>
     
-    Usage :
+   Usage :
     
     
-    `fn add( a: i32, b: i32 ) -> i32 {
+    fn add( a: i32, b: i32 ) -> i32 {
       a + b 
       } 
+      
       let x = add(1, 1); 
       let y = add(3, 0); 
-      let z = add(x, 1);`
+      let z = add(x, 1); 
       
-    As seen above, functions can be executed by calling the function itself. <br>
+   As seen above, functions can be executed by calling the function itself.
     
+    
+## println! Macro
+    println! macro displays information to the terminal. <br>
+    
+       let age = 43;
+       println!("hello");
+       println!("I am {:?} years old", age);
+       
+   {:?} is used a debugger to assign the value of a variable.
+   
+   
+   
+## Control FLow
+
+ When writing a fairly medium sized program, we might have to use control flow statements. <br>
+ By control flow I mean, making choices betweeen decisions based on input. <br>
+ - if.
+ - else.
+ - else if.   
+ 
+ These keywords are universally used in almost all programming languages to direct control flow.
+ 
+ Simple flow: 
+ 
+    let a = 1;
+    let b = 2;
+    let c = 3;
+   
+    
+ if...else flow :
+ 
+    let a = 100;
+    if a > 100 {
+    println!("Big number."); 
+    } else {
+     println!("Small number.")
+    }
   
+ nested if...else :
+   
+    let a  = 100 ;
+      if a > 100 {
+        if a > 191 {
+        println! ("Big number."); 
+      } else {
+        println! ("A little big. ") ;
+      } 
+    } else {
+        println! ("Small number.")
+    }
+    
+  if...else if...else :
   
+     let a = 99;
+     if a > 200 {
+        println! ( " Huge number." );
+     else if a > 99 {
+        println! ( "Big number." );
+     } else {
+        println! ( "Small number." );
+     }
+   
+   
+   
+   It's important to remember that code executes line by line and therefore it becomes necessary to
+   mention the steps correctly.
+   
+   ## Repetition 
+   
+    
  
   
   
