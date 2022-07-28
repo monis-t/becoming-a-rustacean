@@ -332,17 +332,17 @@ Expressions allow nested logic.
 - Memory is stored in binary, ie 0 or 1.
 - Computers are optimized for bytes, ie 1 byte = 8 contiguous bits.
 <br>
-### Addresses
+##  Addresses
 - All data in memory has an address.
 - That's how computers locate data.
 - Data dosen't utilize memory directly, it's usually handled by variables.
 <br>
-### Offsets
+## Offsets
 - Items can be located at an address using an "offset".
 - Offsets begin at 0.
 - Offsets represent number of bytes away from the original address normally dealing with indices.
 <br>
-### Addresses & Offsets
+##  Addresses & Offsets
 - Memory uses addresses and offsets.
 - Adresses are permanent, data differs and usually handled by variables.
 - Offsets can be used to "index" into some data.
@@ -397,7 +397,118 @@ The concept of ownership is an interesting topic in rust. Now, programs are supp
         display_ligth(&dull);
       }
       
-      
+  ## Data Structures 
+  
+  Vectors <br>
+  - Vectors in rust are used to represent data of the same type.
+  - They can be used to add, read and traverse data.
+
+    let my_number = vec! [1,2,3];
+    for num in my_numbers {
+      println!(""{:?}", num);
+    }
+  
+  
+   Strings<br>
+   - Strings are of two types in rust.
+   - String : owned .
+   - &str : borrowed string slice.
+   - An owned string(String) must be used to store data in struct.
+   - &str must be used when passing data to a function.
+   <br>
+   
+       fn println!(data: &str) {
+         println!("{:?}", data);
+       }
+       
+       fn main() {
+        print_it("a string slice.");
+         let owned_string = "owned string".to_owned();
+         let another_owned = String::from("another");
+         println!(&owned_string);
+         println!(&another_owned);
+        }
+        
+        ---------Struct-----------
+        struct {
+         name: String,
+        }
+        
+        fn main() {
+         let emp_name = "Jayson".to_owned();
+         let emp_name = String::from("jayson");
+         let emp = Employee {
+           name: emp_name
+           };
+          }
+          
+  - String are automatically borrowed.
+  - Use to.owned() or String::from() to create an owned copy of a string slice.
+  - Use and owned String when storing in a struct.
+
+<br>
+
+## Type Annotations
+
+- Required for function signatures.
+- Types are usually inferred.
+- Can also be specified in code if not present in function signature.
+
+     -----------------------Basic------------------------
+     fn print_many(msg: &str, count: i32) {}
+     
+     enum Mouse {
+       LeftClick,
+       RightClick,
+       MiddleClick,
+     }
+     
+     let num: i32 = 15;
+     let a: char  = 'a';
+     let left_click: Mouse = Mouse::LeftClick;
+     
+     ---------------------Generic-----------------------------
+    
+     let numbers: Vec<i32> = vec![1,2,3];
+     let letters: Vec<char> = vec!['a','b','c'];
+     let clicks: Vec<Mouse> = vec![
+                 Mouse::LeftClick,
+                 Mouse::RigthClick,
+                 Mouse::MiddleClick,
+             ];
+ <br>
+ 
+ ## A different way of working with enums.
+ 
+ - Enum is a type that can represent one item at a time.
+ - Each item is called a variant.
+ - It's not limited to just plain variants.
+ - Each variant can contain additional data, ie, type annotations.
+
+      enum Mouse {
+       LeftClick,
+       RightClick,
+       MiddleClick,
+       Scroll(i32),
+       Move(i32, i32),
+     }
+ 
+     enum PromoDiscount {
+       NewUser,
+       Holiday(String),
+     }
+ 
+     enum Discount {
+        Percent(f64),
+        Promo(PromoDiscount),
+     }
+ 
+- Note that other than type annotations, the data can also be another enum.
+- More than one peice of data can be associated with a variant.
+ 
+ 
+ 
+## Options
       
   
     
