@@ -454,24 +454,24 @@ The concept of ownership is an interesting topic in rust. Now, programs are supp
 - Types are usually inferred.
 - Can also be specified in code if not present in function signature.
 
-     -----------------------Basic------------------------
-     fn print_many(msg: &str, count: i32) {}
+        -----------------------Basic------------------------
+        fn print_many(msg: &str, count: i32) {}
      
-     enum Mouse {
-       LeftClick,
-       RightClick,
-       MiddleClick,
-     }
+        enum Mouse {
+         LeftClick,
+         RightClick,
+         MiddleClick,
+        }
      
-     let num: i32 = 15;
-     let a: char  = 'a';
-     let left_click: Mouse = Mouse::LeftClick;
+         let num: i32 = 15;
+         let a: char  = 'a';
+         let left_click: Mouse = Mouse::LeftClick;
      
-     ---------------------Generic-----------------------------
+         ---------------------Generic-----------------------------
     
-     let numbers: Vec<i32> = vec![1,2,3];
-     let letters: Vec<char> = vec!['a','b','c'];
-     let clicks: Vec<Mouse> = vec![
+         let numbers: Vec<i32> = vec![1,2,3];
+         let letters: Vec<char> = vec!['a','b','c'];
+         let clicks: Vec<Mouse> = vec![
                  Mouse::LeftClick,
                  Mouse::RigthClick,
                  Mouse::MiddleClick,
@@ -485,23 +485,23 @@ The concept of ownership is an interesting topic in rust. Now, programs are supp
  - It's not limited to just plain variants.
  - Each variant can contain additional data, ie, type annotations.
 
-      enum Mouse {
-       LeftClick,
-       RightClick,
-       MiddleClick,
-       Scroll(i32),
-       Move(i32, i32),
-     }
- 
-     enum PromoDiscount {
-       NewUser,
-       Holiday(String),
-     }
- 
-     enum Discount {
-        Percent(f64),
-        Promo(PromoDiscount),
-     }
+          enum Mouse {
+           LeftClick,
+           RightClick,
+           MiddleClick,
+           Scroll(i32),
+           Move(i32, i32),
+         }
+
+         enum PromoDiscount {
+           NewUser,
+           Holiday(String),
+         }
+
+          enum Discount {
+           Percent(f64),
+           Promo(PromoDiscount),
+         }
  
 - Note that other than type annotations, the data can also be another enum.
 - More than one peice of data can be associated with a variant.
@@ -509,7 +509,75 @@ The concept of ownership is an interesting topic in rust. Now, programs are supp
  
  
 ## Options
-      
+
+- A type maybe one of two things: Some data of a specified type or Nothing.
+- Options is usually used in scenarios where data may not be required or is unavailable.
+- Maybe the program is unable to find something, maybe it ran out of items in a list.
+
+         enum Option<T> {
+            Some(T),
+            None
+          }
+          
+          -------------------------------
+          
+         struct {
+           age: Option<i32>,
+           email: String,
+         }
+         
+         let mark = Customer {
+           age: Some(22), email: "monist998@gmail.com".to_owned(),
+        };
+        
+        let becky = Customer {
+          age: Some(22), email:"becky@example.com".to_owned(),
+        };
+        
+        match becky.age {
+          Some(age) => println!("customer is {:?} years old", age),
+          None => println!("customer age not provided"),
+        }
+        
+        --------------------------------------------------------------
+    
+<br>
+- Options represent some data or nothing.
+- Some (variable name) : data is available.
+- None : no data available.
+- It comes in use when no data is avaialable.
+- Option<Type>.
+ 
+ 
+<br>
+ 
+## Result 
+ 
+- A data type that contains one of two data types.
+- "Successful" data or "Error" data.
+- Used in scenarios where action needs to be taken but there is a possibility of failure.
+- Maybe you failed to copy a file or a connection to server failed.
+  
+              enum Result<T, E> {
+              Ok(T),
+              Err(E),
+             }
+
+        ---------------------------------
+  
+                                      fn get_sound(name: &str) -> Result<SoundData, String>  {
+                                       if name == "alert" {
+                                         Ok(SoundData::new("alert")),
+                                       } else {
+                                        Err("unable to find sound data".to_owned())
+                                       }
+                                      }
+
+                                       let sound = get_sound("alert");
+                                       match sound {
+                                        Ok(_) => println!("sound data located");
+                                        Err(e) => println!("error: {:?}", e),
+                                       }
   
     
 
