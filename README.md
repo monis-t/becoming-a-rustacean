@@ -581,6 +581,16 @@ The concept of ownership is an interesting topic in rust. Now, programs are supp
   
     
 
+ <br>
+ 
+ - Result data type represents success or failure.
+ - Ok(variable name) => operation completed.
+ - Err(variable_name) => operation failed.
+ 
+ - Useful when working with funcationlity that can fail.
+ - Result<T, E>
+ 
+ 
  
   
   
