@@ -257,5 +257,151 @@ Data types :
   
     
  ## Tuples
+ 
+ Tuples are a type of record that's used to store data anonymously. <br>
+ It's useful for returning pairs of data from functions while also having the ability to destructure into variables. <br>
+ <br>
+ `enum Access {
+   Full,
+   }
+   
+   fn one_two_three() -> (i32, i32, i32) {
+     (1,2,3)
+    }
+    
+    let numbers = one_two_three();
+    let(x,y,z) = one_two_three;
+    println!("{:?}", x, numbers.0);
+    println!("{:?}", y, numbers.1);
+    println!("{:?}", z, numbers.2);
+    
+    let (employee, access) = ("jake", Access::Full);`
+    
+<br>
+Use of structs when there are more than 3 fields is advised.
+<br>
+
+## Expressions
+
+Rust is an expression-based language where most things are evaluated and some type is returned. <br>
+Expressions values come together to a single point and can be used for nesting logic when required, <br>
+
+    let my_num = 3;
+    let is_it_5 = if my_num < 5 {
+      true
+     } else {
+      false 
+     };
+     
+     let is_it_5 = my_num < 5;
+<br>
+ 
+     let my_num = 3;
+     let message = match my_num {
+        1 => "hello",
+        _ => "goodbye"
+     };
+<br>
+
+     enum Menu {
+      Burger,
+      Fries,
+      Drink,
+     }
+     
+     let paid = true;
+     let item = Menu::Drink;
+     let drink_type = "water";
+     let order_placed = match item {
+       Menu::Drink => {
+       if drink_type == "water" {
+         true
+       } else {
+         false
+       }
+          _ => true,
+      };
+   
+<br>
+
+Expressions allow nested logic.
+<br>
+
+## Intermediate Memory Concepts 
+
+- Memory is stored in binary, ie 0 or 1.
+- Computers are optimized for bytes, ie 1 byte = 8 contiguous bits.
+<br>
+### Addresses
+- All data in memory has an address.
+- That's how computers locate data.
+- Data dosen't utilize memory directly, it's usually handled by variables.
+<br>
+### Offsets
+- Items can be located at an address using an "offset".
+- Offsets begin at 0.
+- Offsets represent number of bytes away from the original address normally dealing with indices.
+<br>
+### Addresses & Offsets
+- Memory uses addresses and offsets.
+- Adresses are permanent, data differs and usually handled by variables.
+- Offsets can be used to "index" into some data.
+<br>
+
+## Ownership 
+The concept of ownership is an interesting topic in rust. Now, programs are supposed to track memory and if they fail to do so, a memory leak occurs.
+- Rust utilizes an ownership model to manage memory, i.e, the owner of the memory is resposnible for cleaning up memory.
+- Memory can either be moved or borrowed.
+
+-------------------------------
+|           Move              |
+-------------------------------
+     enum Light {
+       Bright,
+       Dull,
+     }
+     
+     fn display_ligth (light: Light) {
+       match light {
+         Light::Bright => println!("bright"),
+         Light::Dull   => println!("dull"),
+        }
+      }
+      
+      fn main() [
+        let dull = Light::Dull;
+        display_light(dull);
+        display_light(dull);
+      }
+      
+ ------------------------------------------
+ |              Borrow                    |
+ ------------------------------------------
+      
+      
+      enum Light {
+        Bright,
+        Dull,
+      }
+      
+      fn display_light(light:: &Light) {
+         match light {
+          Light::Bright => println!("bright");
+          Light::Dull   => println!("dull");
+        }
+      }
+      
+      fn main() {
+        let dull = Light::Dull;
+        display_light(&dull);
+        display_ligth(&dull);
+      }
+      
+      
+      
+  
+    
+
+ 
   
   
